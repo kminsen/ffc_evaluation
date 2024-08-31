@@ -82,21 +82,40 @@
 - personally i believe its the lack of data, to enable the model to effectively distinguish between the pocket and staff badge
 - pretrained yolov5 trained on coco dataset and the images resolution and view is quite different with the datast too
 
-- ![Confusion Matrix](./yolov5/runs/val/test_result/confusion_matrix.png)
-- ![F1-curve](./yolov5/runs/val/test_result/F1_curve.png)
-- ![PR-Curve](./yolov5/runs/val/test_result/PR_curve.png)
+- ![Confusion Matrix](./yolov5/runs/val/run7_test/confusion_matrix.png)
+- ![F1-curve](./yolov5/runs/val/run7_test/F1_curve.png)
+- ![PR-Curve](./yolov5/runs/val/run7_test/PR_curve.png)
 
 ## 6. Conclusion
-- **Summary**: Recap the key findings of the AI evaluation test.
+- **Summary**
 - the finetuned model is great at detecting staff, in fact it is too 'confident' as there are lots of False Postives.
 - A sign of overfitting due to the scarcity of dataset that is used to finetune the model. 
+- In my opinion, larger dataset is required to increase the model performance of the model.
 
 
 ## 8. References
 - [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640)
-- [RECTANGULAR INFERENCE](https://github.com/ultralytics/yolov3/issues/232)
+- [GitHubIssue: RECTANGULAR INFERENCE](https://github.com/ultralytics/yolov3/issues/232)
+- [GitHubIssue: Difference between val and detect](https://github.com/ultralytics/yolov5/issues/8584)
+- [GithubIssue: Varying image size](https://github.com/ultralytics/yolov5/issues/9046)
+  
 ## 9. Appendix (if needed)
 - **Frame Examples**: Add images of test, labels vs prediction and to show that the model is indeedly overfitting.
-- **Code Snippets**: Provide relevant code snippets used in the detection process.
+- ![GroundTruth when Testing](./yolov5/runs/val/run7_test/val_batch0_labels.jpg)
+- ![Predictions when Testing](./yolov5/runs/val/run7_test/val_batch0_pred.jpg)
+
+- **Commands**: 
+  - **Training**:
+    - ```python train.py --img 640 --epochs 50 --data custom.yaml --weights yolov5s.pt```
+  - **Testing using val.py**:
+    - ```python val.py --weights runs/train/exp7/weights/best.pt --data data/custom_val.yaml --save-hybrid --name test --conf-thres 0.25 --iou-thres 0.6```
+  - **Detect using images**:
+    - ```python detect.py --weights runs/train/exp7/weights/best.pt --source ../dataset/images/test/*.jpg --save-csv```
+  - **Detect using video**:
+    - ```python detect.py --weights runs/train/exp7/weights/best.pt --source ../assignment/sample.mp4 --video --save-csv```
+  - **Detect using video (self-written)**:
+    - ```python inference.py ```
 
 
+
+ 
