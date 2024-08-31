@@ -13,7 +13,7 @@
     - [5.2 Test Metrics](#52-test-metrics)
   - [6. Conclusion](#6-conclusion)
   - [8. References](#8-references)
-  - [9. Appendix (if needed)](#9-appendix-if-needed)
+  - [9. Appendix](#9-appendix)
 
 ## 1. Introduction
 - **Objective**: To train a AI model's ability to detect staff members (individuals wearing a staff badge) in a video and identify the frames where the staff members are detected.
@@ -99,11 +99,13 @@
 - [GitHubIssue: Difference between val and detect](https://github.com/ultralytics/yolov5/issues/8584)
 - [GithubIssue: Varying image size](https://github.com/ultralytics/yolov5/issues/9046)
   
-## 9. Appendix (if needed)
+## 9. Appendix
 - **Frame Examples**: Add images of test, labels vs prediction and to show that the model is indeedly overfitting.
 - ![GroundTruth when Testing](./yolov5/runs/val/run7_test/val_batch0_labels.jpg)
 - ![Predictions when Testing](./yolov5/runs/val/run7_test/val_batch0_pred.jpg)
 
+- **requirements.txt**
+  - list of libraries/dependencies to run the code above
 - **Commands**: 
   - **Training**:
     - ```python train.py --img 640 --epochs 50 --data custom.yaml --weights yolov5s.pt```
